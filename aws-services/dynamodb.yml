@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  OrderManagementTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: OrderManagementTable
+      AttributeDefinitions:
+        - AttributeName: order_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: order_id
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST
+      Tags:
+        - Key: Name
+          Value: OrderManagementTable
+
+Outputs:
+  DynamoDBTableName:
+    Description: "DynamoDB Table Name"
+    Value: !Ref OrderManagementTable
